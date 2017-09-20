@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class App extends Component {
+export default class App extends Component {
   componentDidMount() {
     axios.get("http://api.openweathermap.org/data/2.5/weather?q=Buffalo,usa&appid=665710852455d67e78e4348c9e30a120")
     .then(res => {
@@ -18,10 +18,8 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        
+        {this.props.children}
       </div>
     );
   }
 }
-
-export default App;
