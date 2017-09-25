@@ -6,10 +6,12 @@ export default class Header extends Component {
     render() {
         return (
         <div style={styles.headerContainer}>
-            {(this.props.showBackBtn ? <div>Back</div> : null)}
+            <div style={styles.backButton}>{(this.props.showBackBtn ? "Back" : null)}</div>
+            
             <div style={styles.headerName}>Header</div>
+
             {(this.props.showSettings ? <div style={styles.settingsButton}>Settings</div> : null)}
-            {(this.props.showCloseBtn ? <div>X</div> : null)}
+            {(this.props.showCloseBtn ? <div style={styles.closeButton}>X</div> : null)}
         </div>
         );
     }
@@ -32,11 +34,22 @@ const styles = {
         marginBottom: "10px",
     },
 
+    backButton: {
+        alignSelf: "flex-start",
+        width: "50px",
+    },
+
     headerName: {
         margin: "0px auto",
     },
 
     settingsButton: {
-        
+        alignSelf: "flex-end",
+        width: "50px",
+    },
+    
+    closeButton: {
+        alignSelf: "flex-end",
+        width: "50px",
     },
 }
