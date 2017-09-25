@@ -36,13 +36,15 @@ export default class SingleCityListItem extends Component {
   render() {
     return (
       <Link to="/" style={styles.singleListItemEntry}>
-          <div style={styles.entryTextContainer}>
-            <div style={styles.entryHeader}>{this.props.cityData.name}, {this.props.cityData.sys.country}</div>
-            <div style={styles.entryInfo}>
-                {this.getTemperatureInUnit(this.props.cityData.main.temp, this.props.appSettingUnitTemp)} {this.getUnitLetter(this.props.appSettingUnitTemp)}
-            </div>
+        <div style={styles.entryImageOverlay}></div>
+        <div style={styles.entryTextContainer}>
+          <div style={styles.entryHeader}>{this.props.cityData.name}, {this.props.cityData.sys.country}</div>
+          <div style={styles.entryInfo}>
+              {this.getTemperatureInUnit(this.props.cityData.main.temp, this.props.appSettingUnitTemp)} {this.getUnitLetter(this.props.appSettingUnitTemp)}
           </div>
-          <div><img src={ArrowRight} alt={`See the weather for ${this.props.cityData.name}`} /></div>
+        </div>
+        <div><img src={ArrowRight} alt={`See the weather for ${this.props.cityData.name}`} /></div>
+        <div style={styles.entryShadowBackdrop}></div>
       </Link>
     );
   }
@@ -53,7 +55,6 @@ const styles = {
     width: "calc(100% - 140px)",
     height: "calc(14vh - 40px)", // vh - 50px (padding)
     margin: "0 15px 25px 15px",
-    boxShadow: "0px 5px 15px 0px rgba(0,0,0,0.07)",
     backgroundImage: `url(${ClearSkyBg})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -62,13 +63,28 @@ const styles = {
     textDecoration: "none",
     color: "#ffffff",
     fontFamily: "system, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Lucida Grande'",
-    webkitFontSmoothing: "antialiased",
+    WebkitFontSmoothing: "antialiased",
 
     padding: "25px 30px 25px 30px",
     display: "flex",
     flexDirection: "row",
     alignItems: "center",
     justifyContent: "space-between",
+
+    position: "relative",
+  },
+
+  entryImageOverlay: {
+    background: "linear-gradient(270deg, rgba(31,42,71,0) 0%, #212F4E 100%)",
+    display: "block",
+    position: "absolute",
+    top: "0px", 
+    left: "0px",
+    height: "100%",
+    width: "100%",
+    zIndex: "0",
+    opacity: "0.4",
+    mixBlendMode: "multiply",
   },
 
   entryTextContainer: {
@@ -77,6 +93,7 @@ const styles = {
     alignItems: "flex-start",
     justifyContent: "space-between",
     height: "100%",
+    zIndex: "1",
   },
 
   entryHeader: {
@@ -88,5 +105,17 @@ const styles = {
   entryInfo: {
     fontWeight: "400",
     fontSize: "17px",
+  },
+
+  entryShadowBackdrop: {
+    backgroundColor: "#000000",
+    position: "absolute",
+    zIndex: "-1",
+    top: "7%",
+    left: "1%",
+    height: "98%",
+    width: "98%",
+    opacity: "0.2",
+    filter: "blur(5px)",
   }
 }
