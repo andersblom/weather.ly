@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
-
 import PropTypes from 'prop-types';
+
+import sharedStyles from '../resources/sharedStyles';
 
 export default class Header extends Component {
     render() {
         return (
         <div style={styles.headerContainer}>
-            <div style={styles.backButton}>{(this.props.showBackBtn ? "Back" : null)}</div>
+            {(this.props.showBackBtn ? <div style={styles.backButton} onClick={this.props.history.goBack}>Back</div> : null)}
             
-            <div style={styles.headerName}>Header</div>
+            <div style={styles.headerName}>weather.ly</div>
 
             {(this.props.showSettings ? <div style={styles.settingsButton}>Settings</div> : null)}
             {(this.props.showCloseBtn ? <div style={styles.closeButton}>X</div> : null)}
@@ -32,6 +33,7 @@ const styles = {
         alignItems: "space-between",
         justifyContent: "space-between",
         marginBottom: "35px",
+        fontFamily: sharedStyles.font, 
     },
 
     backButton: {
@@ -41,6 +43,8 @@ const styles = {
 
     headerName: {
         margin: "0px auto",
+        fontWeight: "300",
+        fontSize: "14px",
     },
 
     settingsButton: {

@@ -5,6 +5,7 @@ import Welcome from './components/Welcome'
 import WeatherData from './containers/WeatherData';
 import Settings from './components/Settings';
 import NotFound from './components/NotFound';
+import AddCity from './components/AddCity';
 
 export default class App extends Component {
   constructor() {
@@ -35,6 +36,7 @@ export default class App extends Component {
           <Switch>
             <Route exact path="/" render={() => <Welcome />} />
             <Route path="/cities" render={() => <WeatherData appSettingsUnitDistance={this.state.appSettingsUnitDistance} appSettingUnitTemp={this.state.appSettingUnitTemp} />} />
+            <Route path="/add" component={AddCity} />
             <Route path="/settings" render={() => <Settings updateSetting={this.updateSetting} appSettingsUnitDistance={this.state.appSettingsUnitDistance} appSettingUnitTemp={this.state.appSettingUnitTemp} />} />
             <Route component={NotFound} />
           </Switch>
