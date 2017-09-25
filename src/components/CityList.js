@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 import Header from './Header';
 import SingleCityListItem from './SingleCityListItem';
+
+import sharedStyles from '../resources/sharedStyles';
 
 export default class CityList extends Component {  
     render() {
@@ -18,7 +21,10 @@ export default class CityList extends Component {
         return (
         <div>
             <Header showBackBtn={false} showSettings={true} showCloseBtn={false} />
-            <div style={styles.cityListContainer}>{citiesToRenderToList}</div>
+            <div style={styles.cityListContainer}>
+                {citiesToRenderToList}
+                <Link to={"/"} style={styles.addCityButton}>Add city</Link>
+            </div>
         </div>
         );
     }
@@ -30,5 +36,11 @@ const styles = {
         flexDirection: "column",
         alignItems: "center",
         justifyContent: "flex-start",
+        minHeight: "80vh",
+    },
+    addCityButton: {
+        marginTop: "auto",
+        padding: "1em 3em 1em 3em",
+        border: "3px solid " + sharedStyles.color.blue,
     }
 }
