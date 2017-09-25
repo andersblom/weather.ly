@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-export default class GetWeatherData extends Component {
+export default class WeatherData extends Component {
     constructor() {
         super();
         this.state = {
