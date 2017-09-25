@@ -11,7 +11,6 @@ export default class SingleCityListItem extends Component {
     this.state = {
       hover: false
     }
-    this.toggleHover = this.toggleHover.bind(this);
   }
 
   getTemperatureInUnit(kelvin, unit) {
@@ -32,10 +31,6 @@ export default class SingleCityListItem extends Component {
     } else {
       return "°F"
     }
-  }
-
-  toggleHover() {
-
   }
 
   render() {
