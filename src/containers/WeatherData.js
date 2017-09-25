@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+import CityList from '../components/CityList';
+import NoCitiesAvailableMessage from '../components/NoCitiesAvailableMessage';
+
 export default class WeatherData extends Component {
     constructor() {
         super();
@@ -29,16 +32,17 @@ export default class WeatherData extends Component {
                 // Saving the data to the temporary array from above
                 .then(res => {
                     arrayOfCityDataFromLocalStorage.unshift(res.data);
-                })
+                }).then(res => {
+                    // Set the current container's state to the contents of the 2 arrays
+                    this.setState({
+                        cities: arrayOfCitiesFromLocalStorage,
+                        cityDataCollection: arrayOfCityDataFromLocalStorage
+                    });
+                }) 
                 // If any errors, logging them until we can do some proper error handling
                 .catch(err => console.error(err));
             });
 
-            // Set the current container's state to the contents of the 2 arrays
-            this.setState({
-                cities: arrayOfCitiesFromLocalStorage,
-                cityDataCollection: arrayOfCityDataFromLocalStorage
-            });
         } else {
             // No cities found saved in localStorage: Assume this user is new / has no saved cities.
             console.log("No cities found in localStorage: weatherly_cities, proceeding stateless.");
@@ -64,10 +68,11 @@ export default class WeatherData extends Component {
     }
 
     render() {
-        return (
-        <div>
-            I got the weather data
-        </div>
-        );
+        if (this.state.cityDataCollection.length === 0) {
+            return <NoCitiesAvailableMessage />
+        } else {
+            return <CityList data={this.state.cityDataCollection} />
+        }
+        
     }
 }
