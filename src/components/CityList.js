@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+import Header from './Header';
 import SingleCityListItem from './SingleCityListItem';
 
 export default class CityList extends Component {  
@@ -9,6 +10,7 @@ export default class CityList extends Component {
         })
         return (
         <div>
+            <Header showBackBtn={false} showSettings={true} showCloseBtn={false} />
             {citiesToRenderToList}
         </div>
         );

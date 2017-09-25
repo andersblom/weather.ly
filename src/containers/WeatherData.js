@@ -27,7 +27,7 @@ export default class WeatherData extends Component {
 
             // Fetching and saving all the weatherdata for the cities from the
             // arrayOfCitiesFromLocalStorage array. 
-            arrayOfCitiesFromLocalStorage.map((city, index) => {
+            arrayOfCitiesFromLocalStorage.forEach((city, index) => {
                 axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=665710852455d67e78e4348c9e30a120`)
                 // Saving the data to the temporary array from above
                 .then(res => {
@@ -73,6 +73,6 @@ export default class WeatherData extends Component {
         } else {
             return <CityList data={this.state.cityDataCollection} />
         }
-        
+
     }
 }
