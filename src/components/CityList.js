@@ -40,7 +40,14 @@ const styles = {
     },
     addCityButton: {
         marginTop: "auto",
-        padding: "1em 3em 1em 3em",
+        padding: "1.2em 3.4em 1.2em 3.4em",
         border: "3px solid " + sharedStyles.color.blue,
+        color: sharedStyles.color.blue,
+        fontFamily: sharedStyles.font,
+        textDecoration: "none",
+        textTransform: "uppercase",
+        fontSize: "14px",
+        fontWeight: "bold",
+        borderRadius: "100px",
     }
 }

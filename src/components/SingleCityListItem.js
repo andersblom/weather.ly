@@ -5,6 +5,8 @@ import ClearSkyBg from '../resources/listentrybackgrounds/clearsky.jpg';
 
 import ArrowRight from '../resources/misc/arrow-r.svg';
 
+import sharedStyles from '../resources/sharedStyles';
+
 export default class SingleCityListItem extends Component {
   constructor() {
     super();
@@ -62,8 +64,7 @@ const styles = {
     borderRadius: "5px",
     textDecoration: "none",
     color: "#ffffff",
-    fontFamily: "system, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Lucida Grande'",
-    WebkitFontSmoothing: "antialiased",
+    fontFamily: sharedStyles.font,
 
     padding: "25px 30px 25px 30px",
     display: "flex",
@@ -98,7 +99,7 @@ const styles = {
 
   entryHeader: {
     fontWeight: "bold",
-    fontFamily: "system, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', 'Lucida Grande'",
+    fontFamily: sharedStyles.font,
     fontSize: "20px",
   },
   
