@@ -13,6 +13,19 @@ export default class App extends Component {
       appSettingUnitTemp: "fahrenheit", // or "celcius"
       appSettingsUnitDistance: "feet" // or "meters"
     }
+    this.updateSetting = this.updateSetting.bind(this);
+  }
+
+  updateSetting(setting, updatedValue) {
+    if (setting === "unittemp") {
+      this.setState({
+        appSettingUnitTemp: updatedValue
+      })
+    } else {
+      this.setState({
+        appSettingUnitDistance: updatedValue
+      })
+    }
   }
 
   render() {
@@ -22,7 +35,7 @@ export default class App extends Component {
           <Switch>
             <Route exact path="/" render={() => <Welcome />} />
             <Route path="/cities" render={() => <WeatherData appSettingsUnitDistance={this.state.appSettingsUnitDistance} appSettingUnitTemp={this.state.appSettingUnitTemp} />} />
-            <Route path="/settings" render={() => <Settings appSettingsUnitDistance={this.state.appSettingsUnitDistance} appSettingUnitTemp={this.state.appSettingUnitTemp} />} />
+            <Route path="/settings" render={() => <Settings updateSetting={this.updateSetting} appSettingsUnitDistance={this.state.appSettingsUnitDistance} appSettingUnitTemp={this.state.appSettingUnitTemp} />} />
             <Route component={NotFound} />
           </Switch>
         </Router>
