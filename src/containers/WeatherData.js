@@ -71,7 +71,7 @@ export default class WeatherData extends Component {
         if (this.state.cityDataCollection.length === 0) {
             return <NoCitiesAvailableMessage />
         } else {
-            return <CityList data={this.state.cityDataCollection} />
+            return <CityList {...this.props} data={this.state.cityDataCollection} />
         }
 
     }

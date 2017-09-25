@@ -31,7 +31,7 @@ const styles = {
         flexDirection: "row",
         alignItems: "space-between",
         justifyContent: "space-between",
-        marginBottom: "10px",
+        marginBottom: "15px",
     },
 
     backButton: {
