@@ -14,6 +14,7 @@ export default class App extends Component {
       appSettingsUnitDistance: "feet" // or "meters"
     }
   }
+
   render() {
     return (
       <div className="App">
