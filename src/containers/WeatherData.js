@@ -5,39 +5,62 @@ export default class WeatherData extends Component {
     constructor() {
         super();
         this.state = {
-            todaysWeather: undefined,
-            weekForecastData: undefined,
+            cities: [],
+            cityDataCollection: []
         }
-        
-        this.getThisWeeksForecast = this.getThisWeeksForecast.bind(this);
-        this.getTodaysWeatherData = this.getTodaysWeatherData.bind(this);
     }
 
     componentDidMount() {
-        this.getThisWeeksForecast("Buffalo, NY", "USA");
-        this.getTodaysWeatherData("Buffalo, NY", "USA");
+        this.fetchSavedCities();
     }
 
-    getThisWeeksForecast(city) {
-        axios.get(`http://api.openweathermap.org/data/2.5/forecast?q=${city}&appid=665710852455d67e78e4348c9e30a120`)
-        .then(res => {
-            this.setState({
-                weekForecastData: res.data
+    fetchSavedCities() {
+        // Checking if localstorage has any cities - if it does, set those as the current state.
+        // If not, then proceed state-less and render the "no cities added" message.
+        if (localStorage.getItem("weatherly_cities") !== null) {
+            // Helper variables for mapping and state setting
+            const arrayOfCitiesFromLocalStorage = JSON.parse(localStorage.getItem("weatherly_cities"));
+            let arrayOfCityDataFromLocalStorage = [];
+
+            // Fetching and saving all the weatherdata for the cities from the
+            // arrayOfCitiesFromLocalStorage array. 
+            arrayOfCitiesFromLocalStorage.map((city, index) => {
+                axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=665710852455d67e78e4348c9e30a120`)
+                // Saving the data to the temporary array from above
+                .then(res => {
+                    arrayOfCityDataFromLocalStorage.unshift(res.data);
+                })
+                // If any errors, logging them until we can do some proper error handling
+                .catch(err => console.error(err));
             });
-            console.log("getThisWeeksForecast returned: ", res.data);
-        })
-        .catch(err => console.error(err));
+
+            // Set the current container's state to the contents of the 2 arrays
+            this.setState({
+                cities: arrayOfCitiesFromLocalStorage,
+                cityDataCollection: arrayOfCityDataFromLocalStorage
+            });
+        } else {
+            // No cities found saved in localStorage: Assume this user is new / has no saved cities.
+            console.log("No cities found in localStorage: weatherly_cities, proceeding stateless.");
+        }
     }
 
-    getTodaysWeatherData(city) {
-        axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=665710852455d67e78e4348c9e30a120`)
-        .then(res => {
-            this.setState({
-                todaysWeather: res.data
-            });
-            console.log("getTodaysWeatherData returned: ", res.data);
-        })
-        .catch(err => console.error(err));
+    deleteCityFromStorage(city) {
+        // Comming soon
+    }
+
+    saveCityToLocalStorage(city) {
+        // Old city data
+        const currentCities = localStorage.getItem("weatherly_cities");
+
+        // New array with the old + new cities
+        const newCities = currentCities.unshift(city);
+
+        // Settings a new localStorage
+        localStorage.setItem("weatherly_cities", JSON.stringify(newCities));
+
+        // Fetching new data from the new localStorage contents
+        this.fetchSavedCities();
     }
 
     render() {
