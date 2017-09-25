@@ -13,6 +13,7 @@ export default class SingleCityListItem extends Component {
     this.state = {
       hover: false
     }
+    this.changeHoverState = this.changeHoverState.bind(this);
   }
 
   getTemperatureInUnit(kelvin, unit) {
@@ -35,9 +36,24 @@ export default class SingleCityListItem extends Component {
     }
   }
 
+  changeHoverState() {
+    this.setState({
+      hover: !this.state.hover
+    })
+  }
+
   render() {
     return (
-      <Link to="/" style={styles.singleListItemEntry}>
+      <Link 
+        to="/" 
+        style={(this.state.hover ? 
+          {...styles.singleListItemEntry, ...styles.singleListItementryHover} 
+          : 
+          styles.singleListItemEntry
+          )} 
+        onMouseEnter={() => this.changeHoverState()} 
+        onMouseLeave={() => this.changeHoverState()}
+      >
         <div style={styles.entryImageOverlay}></div>
         <div style={styles.entryTextContainer}>
           <div style={styles.entryHeader}>{this.props.cityData.name}, {this.props.cityData.sys.country}</div>
@@ -46,7 +62,12 @@ export default class SingleCityListItem extends Component {
           </div>
         </div>
         <div><img src={ArrowRight} alt={`See the weather for ${this.props.cityData.name}`} /></div>
-        <div style={styles.entryShadowBackdrop}></div>
+        <div style={(this.state.hover ?
+          {...styles.entryShadowBackdrop, ...styles.entryShadowBackdropHover}
+          :
+          styles.entryShadowBackdrop
+          )}
+        ></div>
       </Link>
     );
   }
@@ -73,6 +94,12 @@ const styles = {
     justifyContent: "space-between",
 
     position: "relative",
+
+    transition: "margin 150ms ease-in-out",
+  },
+
+  singleListItementryHover: {
+    margin: "-5px 15px 30px 15px",
   },
 
   entryImageOverlay: {
@@ -114,9 +141,15 @@ const styles = {
     zIndex: "-1",
     top: "7%",
     left: "1%",
-    height: "98%",
+    height: "98%",  
     width: "98%",
     opacity: "0.2",
     filter: "blur(5px)",
+
+    transition: "top 150ms ease-in-out",
+  },
+  
+  entryShadowBackdropHover: {
+    top: "10%",
   }
 }
