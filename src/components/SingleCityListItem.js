@@ -77,7 +77,7 @@ const styles = {
   singleListItemEntry: {
     width: "calc(100% - 140px)",
     height: "calc(14vh - 40px)", // vh - 50px (padding)
-    margin: "0 15px 25px 15px",
+    margin: "0 15px 40px 15px",
     backgroundImage: `url(${ClearSkyBg})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
@@ -99,7 +99,7 @@ const styles = {
   },
 
   singleListItementryHover: {
-    margin: "-5px 15px 30px 15px",
+    margin: "-5px 15px 45px 15px",
   },
 
   entryImageOverlay: {

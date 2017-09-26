@@ -25,7 +25,7 @@ export default class CityList extends Component {
         } else {
             return (
                 <div>
-                    <Header showBackBtn={false} showSettings={true} showCloseBtn={false} />
+                    <Header {...this.props} showBackBtn={false} showSettings={true} />
                     <div style={styles.cityListContainer}>
                         {citiesToRenderToList}
                         <Link to={"/cities/add"} style={styles.addCityButton}>Add city</Link>
@@ -46,6 +46,7 @@ const styles = {
     },
     addCityButton: {
         marginTop: "auto",
+        marginBottom: "20px",
         padding: "1.2em 3.4em 1.2em 3.4em",
         border: "3px solid " + sharedStyles.color.blue,
         color: sharedStyles.color.blue,

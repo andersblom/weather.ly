@@ -4,16 +4,18 @@ import { Link } from 'react-router-dom';
 
 import sharedStyles from '../resources/sharedStyles';
 
+import SettingsIcon from '../resources/misc/settings_icon.png';
+import ArrowL from '../resources/misc/arrow-l.svg';
+
 export default class Header extends Component {
     render() {
         return (
         <div style={styles.headerContainer}>
-            {(this.props.showBackBtn ? <div style={styles.backButton} onClick={this.props.history.goBack}>Back</div> : null)}
+            <div style={styles.backButton} onClick={() => this.props.history.goBack()}>{(this.props.showBackBtn ? <img src={ArrowL} style={styles.backIcon} alt="Settings" /> : null)}</div>
             
             <div style={styles.headerName}>weather.ly</div>
 
-            {(this.props.showSettings ? <Link to="/settings" style={styles.settingsButton}>Settings</Link> : null)}
-            {(this.props.showCloseBtn ? <div style={styles.closeButton} onClick={this.props.history.goBack}>X</div> : null)}
+            <div style={styles.settingsButton}>{(this.props.showSettings ? <Link to="/settings"><img src={SettingsIcon} style={styles.settingsIcon} alt="Settings" /></Link> : null)}</div>
         </div>
         );
     }
@@ -22,24 +24,29 @@ export default class Header extends Component {
 Header.propTypes = {
     showBackBtn: PropTypes.bool.isRequired,
     showSettings: PropTypes.bool.isRequired,
-    showCloseBtn: PropTypes.bool.isRequired,
 }
 
 const styles = {
     headerContainer: {
-        backgroundColor: "#dedede",
-        padding: "10px 20px 10px 20px",
+        height: "80px",
+        marginBottom: "35px",
         display: "flex",
         flexDirection: "row",
-        alignItems: "space-between",
-        justifyContent: "space-between",
-        marginBottom: "35px",
+        alignItems: "center",
+        justifyContent: "center",
         fontFamily: sharedStyles.font, 
+        padding: "0px 20px 0px 20px",
     },
 
     backButton: {
-        alignSelf: "flex-start",
-        width: "50px",
+        marginRight: "auto",
+        width: "30px",
+        height: "30px",
+    },
+
+    backIcon: {
+        height: "30px",
+        width: "30px",
     },
 
     headerName: {
@@ -49,12 +56,13 @@ const styles = {
     },
 
     settingsButton: {
-        alignSelf: "flex-end",
-        width: "50px",
+        marginLeft: "auto",
+        width: "30px",
+        height: "30px",
     },
-    
-    closeButton: {
-        alignSelf: "flex-end",
-        width: "50px",
+
+    settingsIcon: {
+        height: "30px",
+        width: "30px",
     },
 }

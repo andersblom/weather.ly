@@ -38,7 +38,7 @@ export default class AddCity extends Component {
   render() {
     return (
         <div>
-            <Header {...this.props} showBackBtn={true} showSettings={false} showCloseBtn={false} />
+            <Header {...this.props} showBackBtn={true} showSettings={false} />
             <div>Add city</div>
             <form onSubmit={e => this.handleSubmit(e)}>
               <input type="text" value={this.state.cityInput} placeholder="Henlo" onChange={e => this.handleChangeToCityInput(e)} />
