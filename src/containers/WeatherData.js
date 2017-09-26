@@ -76,7 +76,11 @@ export default class WeatherData extends Component {
         currentStorage = JSON.parse(currentStorage);
 
         // Copy it to a fresh array
-        let newStorage = currentStorage.slice();
+        if (currentStorage !== null) {
+            var newStorage = currentStorage.slice();
+        } else {
+            var newStorage = [];
+        }
 
         // Add new city
         newStorage.unshift(city);

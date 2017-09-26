@@ -9,7 +9,7 @@ export default class AddCity extends Component {
     this.state = {
       cityInput: "",
       alertError: false,
-      alertErrorMessage: ""
+      alertErrorMessage: "Whoops! Something went wrong"
     }
   }
 
@@ -25,8 +25,12 @@ export default class AddCity extends Component {
       console.error(err)
       this.setState({
         alertError: true,
-        alertErrorMessage: err.response.data.message
       });
+      if (err.response) {
+        this.setState({
+          alertErrorMessage: err.response.data.message
+        })
+      }
     });
   }
 
