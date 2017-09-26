@@ -93,7 +93,6 @@ export default class WeatherData extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div>
                 <Route exact path={`${this.props.match.url}/`} render={() => <CityList {...this.props} data={this.state.cityDataCollection} />} /> 
