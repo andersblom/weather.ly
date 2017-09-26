@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 import Header from './Header';
@@ -23,7 +22,7 @@ export default class AddCity extends Component {
       this.props.history.push("/cities");
     })
     .catch(err => {
-      console.dir(err)
+      console.error(err)
       this.setState({
         alertError: true,
         alertErrorMessage: err.response.data.message
