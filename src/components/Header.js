@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 import sharedStyles from '../resources/sharedStyles';
 
@@ -11,8 +12,8 @@ export default class Header extends Component {
             
             <div style={styles.headerName}>weather.ly</div>
 
-            {(this.props.showSettings ? <div style={styles.settingsButton}>Settings</div> : null)}
-            {(this.props.showCloseBtn ? <div style={styles.closeButton}>X</div> : null)}
+            {(this.props.showSettings ? <Link to="/settings" style={styles.settingsButton}>Settings</Link> : null)}
+            {(this.props.showCloseBtn ? <div style={styles.closeButton} onClick={this.props.history.goBack}>X</div> : null)}
         </div>
         );
     }

@@ -35,7 +35,7 @@ export default class App extends Component {
           <Switch>
             <Route exact path="/" component={Welcome} />
             <Route path="/cities" render={(props) => <WeatherData {...props} appSettingsUnitDistance={this.state.appSettingsUnitDistance} appSettingUnitTemp={this.state.appSettingUnitTemp} />} />
-            <Route path="/settings" render={() => <Settings updateSetting={this.updateSetting} appSettingsUnitDistance={this.state.appSettingsUnitDistance} appSettingUnitTemp={this.state.appSettingUnitTemp} />} />
+            <Route path="/settings" render={(props) => <Settings {...props} updateSetting={this.updateSetting} appSettingsUnitDistance={this.state.appSettingsUnitDistance} appSettingUnitTemp={this.state.appSettingUnitTemp} />} />
             <Route component={NotFound} />
           </Switch>
         </Router>
