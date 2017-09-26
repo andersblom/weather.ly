@@ -78,7 +78,14 @@ export default class AddCity extends Component {
                   {...styles.addCityButton, ...styles.addCityButtonDisabled}
                   :
                   styles.addCityButton
-                )} />
+                )}
+                disabled={
+                  this.state.cityInput.length < 1 ? 
+                  true
+                  : 
+                  false
+                }
+                 />
             </form>
             {(this.state.alertError ? <div>Error: {this.state.alertErrorMessage}</div> : null)}
         </div>
