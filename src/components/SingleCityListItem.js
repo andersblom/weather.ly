@@ -45,7 +45,7 @@ export default class SingleCityListItem extends Component {
   render() {
     return (
       <Link 
-        to="/" 
+        to={`${this.props.match.url}/city/${this.props.cityData.name.toLowerCase()}`} 
         style={(this.state.hover ? 
           {...styles.singleListItemEntry, ...styles.singleListItementryHover} 
           : 

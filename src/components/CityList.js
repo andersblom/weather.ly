@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 
 import Header from './Header';
 import SingleCityListItem from './SingleCityListItem';
+import NoCitiesAvailableMessage from './NoCitiesAvailableMessage';
 
 import sharedStyles from '../resources/sharedStyles';
 
@@ -15,18 +16,23 @@ export default class CityList extends Component {
                     appSettingUnitTemp={this.props.appSettingUnitTemp} 
                     key={index} 
                     cityData={city} 
+                    {...this.props}
                 />
             );
         });
-        return (
-        <div>
-            <Header showBackBtn={false} showSettings={true} showCloseBtn={false} />
-            <div style={styles.cityListContainer}>
-                {citiesToRenderToList}
-                <Link to={"/cities/add"} style={styles.addCityButton}>Add city</Link>
-            </div>
-        </div>
-        );
+        if (citiesToRenderToList.length === 0) {
+            return <NoCitiesAvailableMessage />
+        } else {
+            return (
+                <div>
+                    <Header showBackBtn={false} showSettings={true} showCloseBtn={false} />
+                    <div style={styles.cityListContainer}>
+                        {citiesToRenderToList}
+                        <Link to={"/cities/add"} style={styles.addCityButton}>Add city</Link>
+                    </div>
+                </div>
+            );
+        }
     }
 }
 

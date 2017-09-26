@@ -3,8 +3,8 @@ import { Route } from 'react-router-dom';
 import axios from 'axios';
 
 import CityList from '../components/CityList';
-import NoCitiesAvailableMessage from '../components/NoCitiesAvailableMessage';
 import AddCity from '../components/AddCity';
+import SingleCityView from '../components/SingleCityView';
 
 export default class WeatherData extends Component {
     constructor() {
@@ -89,14 +89,13 @@ export default class WeatherData extends Component {
     }
 
     render() {
-        if (this.props.location.pathname === "/cities/add") {
-            return <Route path={`${this.props.match.url}/add`} render={() => <AddCity {...this.props} handleSubmitFromAddCity={this.handleSubmitFromAddCity} />} />
-        } else {
-            if (this.state.cityDataCollection.length === 0) {
-                return <NoCitiesAvailableMessage />
-            } else {
-                return <CityList {...this.props} data={this.state.cityDataCollection} />
-            }
-        }
+        console.log(this.props)
+        return (
+            <div>
+                <Route exact path={`${this.props.match.url}/`} render={() => <CityList {...this.props} data={this.state.cityDataCollection} />} /> 
+                <Route path={`${this.props.match.url}/add`} render={() => <AddCity {...this.props} handleSubmitFromAddCity={this.handleSubmitFromAddCity} />} />
+                <Route path={`${this.props.match.url}/city/:cityName`} render={() => <SingleCityView {...this.props} data={this.state.cityDataCollection} />} />
+            </div>
+        );
     }
 }
