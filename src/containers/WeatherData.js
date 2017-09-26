@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
+import { Route } from 'react-router-dom';
 import axios from 'axios';
 
 import CityList from '../components/CityList';
 import NoCitiesAvailableMessage from '../components/NoCitiesAvailableMessage';
+import AddCity from '../components/AddCity';
 
 export default class WeatherData extends Component {
     constructor() {
@@ -11,6 +13,7 @@ export default class WeatherData extends Component {
             cities: [],
             cityDataCollection: []
         }
+        this.handleSubmitFromAddCity = this.handleSubmitFromAddCity.bind(this);
     }
 
     componentDidMount() {
@@ -66,13 +69,20 @@ export default class WeatherData extends Component {
         // Fetching new data from the new localStorage contents
         this.fetchSavedCities();
     }
+    
+    handleSubmitFromAddCity(city) {
+        console.log(city);
+    }
 
     render() {
-        if (this.state.cityDataCollection.length === 0) {
-            return <NoCitiesAvailableMessage />
+        if (this.props.location.pathname === "/cities/add") {
+            return <Route path={`${this.props.match.url}/add`} render={() => <AddCity {...this.props} handleSubmitFromAddCity={this.handleSubmitFromAddCity} />} />
         } else {
-            return <CityList {...this.props} data={this.state.cityDataCollection} />
+            if (this.state.cityDataCollection.length === 0) {
+                return <NoCitiesAvailableMessage />
+            } else {
+                return <CityList {...this.props} data={this.state.cityDataCollection} />
+            }
         }
-
     }
 }

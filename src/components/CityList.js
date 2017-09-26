@@ -23,7 +23,7 @@ export default class CityList extends Component {
             <Header showBackBtn={false} showSettings={true} showCloseBtn={false} />
             <div style={styles.cityListContainer}>
                 {citiesToRenderToList}
-                <Link to={"/add"} style={styles.addCityButton}>Add city</Link>
+                <Link to={"/cities/add"} style={styles.addCityButton}>Add city</Link>
             </div>
         </div>
         );
