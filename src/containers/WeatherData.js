@@ -71,6 +71,12 @@ export default class WeatherData extends Component {
     }
     
     handleSubmitFromAddCity(city) {
+        let currentStorage = localStorage.getItem("weatherly_cities");
+        currentStorage = JSON.parse(currentStorage);
+        let newStorage = currentStorage.slice();
+        newStorage.unshift(city)
+
+        console.log(currentStorage, newStorage);
         console.log(city);
     }
 
