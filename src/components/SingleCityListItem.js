@@ -17,7 +17,7 @@ export default class SingleCityListItem extends Component {
   }
 
   getTemperatureInUnit(kelvin, unit) {
-    if (unit === "celcius") {
+    if (unit === "celsius") {
       let calculatedNumber = kelvin - 273.15;
       calculatedNumber = calculatedNumber.toFixed(0);
       return calculatedNumber;
@@ -29,7 +29,7 @@ export default class SingleCityListItem extends Component {
   }
 
   getUnitLetter(unit) {
-    if (unit === "celcius") {
+    if (unit === "celsius") {
       return "°C"
     } else {
       return "°F"

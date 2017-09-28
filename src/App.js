@@ -10,7 +10,7 @@ export default class App extends Component {
   constructor() {
     super();
     this.state = {
-      appSettingUnitTemp: "fahrenheit", // or "celcius"
+      appSettingUnitTemp: "fahrenheit", // or "celsius"
       appSettingsUnitDistance: "feet" // or "meters"
     }
     this.updateSetting = this.updateSetting.bind(this);
