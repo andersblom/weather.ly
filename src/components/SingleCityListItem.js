@@ -56,60 +56,62 @@ export default class SingleCityListItem extends Component {
     switch (this.props.cityData.weather[0].icon) {
       
       /* eslint-disable */
+      // Clear sky
       case "01d":
       case "01n":
-        console.log("clear sky");
         return ClearSkyBg;
         break;
 
+      // Few clouds
       case "02d":
       case "02n":
-        console.log("few clouds")
         return FewCloudsBg;
         break;
 
+      // Scattered clouds
       case "03d":
       case "03n":
-        console.log("scattered clouds");
         return ScatteredCloudsBg;
         break;
 
+      // Broken Clouds
       case "04d":
       case "04n":
-        console.log("broken clouds");
         return BrokenCloudsBg;
         break;
 
+      // Shower rain
       case "09d":
       case "09n":
-        console.log("shower rain");
         return ShowerRainBg;
         break;
 
+      // Rain
       case "10d":
       case "10n":
-        console.log("rain")
         return RainBg;
         break;
 
+      // Thunderstorm
       case "11d":
       case "11n":
-        console.log("thunderstorm");
         return ThunderstormBg;
         break;
 
+      // Snow
       case "13d":
       case "13n":
-        console.log("snow");
         return SnowingBg;
         break;
 
+      // Mist
       case "50d":
       case "50n":
-        console.log("mist");
         return MistBg;
         break;
 
+      // No match (Could happen because of API problems/changes)
+      // Return clear sky, because it's pretty.
       default: 
         return ClearSkyBg;
       /* eslint-enable */
