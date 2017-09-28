@@ -119,19 +119,12 @@ const styles = {
   },
 
   addCityButton: {
-    backgroundColor: "#ffffff",
+    ...sharedStyles.extends.button,
     marginTop: "40px",
-    padding: "1.2em 3.4em 1.2em 3.4em",
-    border: "3px solid",
     borderColor: sharedStyles.color.blue,
     color: sharedStyles.color.blue,
     fontFamily: sharedStyles.font,
-    textDecoration: "none",
-    textTransform: "uppercase",
-    fontSize: "14px",
-    fontWeight: "bold",
-    borderRadius: "100px",
-    cursor: "pointer",
+
     WebkitAppearance: "none",
   },
 

@@ -142,21 +142,16 @@ const styles = {
   },
 
   changeSettingButton: {
+    ...sharedStyles.extends.button,
+
     marginBottom: "40px",
-    backgroundColor: "transparent",
-    padding: "1.2em 3.4em 1.2em 3.4em",
-    border: "3px solid",
     borderColor: sharedStyles.color.fadedBlue,
     color: sharedStyles.color.fadedBlue,
     fontFamily: sharedStyles.font,
-    textDecoration: "none",
-    textTransform: "uppercase",
-    fontSize: "14px",
-    fontWeight: "bold",
+
     position: "relative",
     zIndex: "0",
-    
-    cursor: "pointer",
+
   },
   changeSettingButtonLeft: {
     borderRadius: "100px 0px 0px 100px",
@@ -179,13 +174,15 @@ const styles = {
   },
 
   submitButton: {
+    ...sharedStyles.extends.button,
+    
     fontFamily: sharedStyles.font,
+    borderColor: sharedStyles.color.blue,
+    color: sharedStyles.color.blue,
+    
     position: "relative",
     zIndex: "0",
 
-    borderColor: sharedStyles.color.blue,
-    color: sharedStyles.color.blue,
 
-    ...sharedStyles.extends.button,
   }
 }
