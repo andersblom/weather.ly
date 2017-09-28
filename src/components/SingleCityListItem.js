@@ -2,6 +2,16 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
 import ClearSkyBg from '../resources/listentrybackgrounds/clearsky.jpg';
+import FewCloudsBg from '../resources/listentrybackgrounds/fewclouds.jpg';
+import ScatteredCloudsBg from '../resources/listentrybackgrounds/scatteredclouds.jpg';
+import BrokenCloudsBg from '../resources/listentrybackgrounds/brokenclouds.jpg';
+import ShowerRainBg from '../resources/listentrybackgrounds/showerrain.jpg';
+import RainBg from '../resources/listentrybackgrounds/rain.jpg';
+import ThunderstormBg from '../resources/listentrybackgrounds/thunderstorm.jpg';
+import SnowingBg from '../resources/listentrybackgrounds/snow.jpg';
+import MistBg from '../resources/listentrybackgrounds/mist.jpg';
+
+
 
 import ArrowRight from '../resources/misc/arrow-r.svg';
 
@@ -42,14 +52,71 @@ export default class SingleCityListItem extends Component {
     })
   }
 
+  getBackgroundImage() {
+    switch (this.props.cityData.weather[0].icon) {
+      
+      /* eslint-disable */
+      case "01d":
+        console.log("clear sky");
+        return ClearSkyBg;
+        break;
+
+      case "02d":
+        console.log("few clouds")
+        return FewCloudsBg;
+        break;
+
+      case "03d":
+        console.log("scattered clouds");
+        return ScatteredCloudsBg;
+        break;
+
+      case "04d":
+        console.log("broken clouds");
+        return BrokenCloudsBg;
+        break;
+
+      case "09d":
+        console.log("shower rain");
+        return ShowerRainBg;
+        break;
+
+      case "10d":
+        console.log("rain")
+        return RainBg;
+        break;
+
+      case "11d":
+        console.log("thunderstorm");
+        return ThunderstormBg;
+        break;
+
+      case "13d":
+        console.log("snow");
+        return SnowingBg;
+        break;
+
+      case "50d":
+        console.log("mist");
+        return MistBg;
+        break;
+
+      default: 
+        return ClearSkyBg;
+      /* eslint-enable */
+
+    }
+  }
+  
   render() {
+    console.log(this.props.cityData)
     return (
       <Link 
         to={`${this.props.match.url}/city/${this.props.cityData.name.toLowerCase()}`} 
         style={(this.state.hover ? 
-          {...styles.singleListItemEntry, ...styles.singleListItementryHover} 
+          {...styles.singleListItemEntry, ...styles.singleListItementryHover, backgroundImage: `url(${this.getBackgroundImage()})`} 
           : 
-          styles.singleListItemEntry
+          {...styles.singleListItemEntry, backgroundImage: `url(${this.getBackgroundImage()})`,}
           )} 
         onMouseEnter={() => this.changeHoverState()} 
         onMouseLeave={() => this.changeHoverState()}
@@ -78,7 +145,6 @@ const styles = {
     width: "calc(100% - 140px)",
     height: "calc(14vh - 40px)", // vh - 50px (padding)
     margin: "0 15px 40px 15px",
-    backgroundImage: `url(${ClearSkyBg})`,
     backgroundSize: "cover",
     backgroundRepeat: "no-repeat",
     backgroundPosition: "center center",
