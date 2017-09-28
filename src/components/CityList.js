@@ -9,7 +9,13 @@ import sharedStyles from '../resources/sharedStyles';
 
 export default class CityList extends Component {  
     render() {
-        const citiesToRenderToList = this.props.data.map((city, index) => {
+        let citiesToRenderToList = this.props.data;
+        
+        citiesToRenderToList = citiesToRenderToList.sort((a, b) => {
+            return a.order - b.order;
+        });
+        
+        citiesToRenderToList = citiesToRenderToList.map((city, index) => {
             return (
                 <SingleCityListItem 
                     appSettingsUnitDistance={this.props.appSettingsUnitDistance} 
@@ -20,6 +26,7 @@ export default class CityList extends Component {
                 />
             );
         });
+
         if (citiesToRenderToList.length === 0) {
             return <NoCitiesAvailableMessage />
         } else {

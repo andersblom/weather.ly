@@ -134,7 +134,7 @@ export default class SingleCityListItem extends Component {
       >
         <div style={styles.entryImageOverlay}></div>
         <div style={styles.entryTextContainer}>
-          <div style={styles.entryHeader}>{this.props.cityData.userInput}, {this.props.cityData.data.sys.country}</div>
+          <div style={styles.entryHeader}>{this.props.cityData.userInput}</div>
           <div style={styles.entryInfo}>
               {this.getTemperatureInUnit(this.props.cityData.data.main.temp, this.props.appSettingUnitTemp)} {this.getUnitLetter(this.props.appSettingUnitTemp)}
           </div>
