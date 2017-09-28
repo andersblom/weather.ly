@@ -11,7 +11,7 @@ export default class App extends Component {
     super();
     this.state = {
       appSettingUnitTemp: "fahrenheit", // or "celsius"
-      appSettingsUnitDistance: "feet" // or "meters"
+      appSettingUnitDistance: "feet" // or "meters"
     }
     this.updateSetting = this.updateSetting.bind(this);
   }
@@ -34,8 +34,8 @@ export default class App extends Component {
         <Router>
           <Switch>
             <Route exact path="/" component={Welcome} />
-            <Route path="/cities" render={(props) => <WeatherData {...props} appSettingsUnitDistance={this.state.appSettingsUnitDistance} appSettingUnitTemp={this.state.appSettingUnitTemp} />} />
-            <Route path="/settings" render={(props) => <Settings {...props} updateSetting={this.updateSetting} appSettingsUnitDistance={this.state.appSettingsUnitDistance} appSettingUnitTemp={this.state.appSettingUnitTemp} />} />
+            <Route path="/cities" render={(props) => <WeatherData {...props} appSettingUnitDistance={this.state.appSettingUnitDistance} appSettingUnitTemp={this.state.appSettingUnitTemp} />} />
+            <Route path="/settings" render={(props) => <Settings {...props} updateSetting={this.updateSetting} appSettingUnitDistance={this.state.appSettingUnitDistance} appSettingUnitTemp={this.state.appSettingUnitTemp} />} />
             <Route component={NotFound} />
           </Switch>
         </Router>
