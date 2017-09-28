@@ -34,7 +34,7 @@ export default class WeatherData extends Component {
                 axios.get(`http://api.openweathermap.org/data/2.5/weather?q=${city}&appid=665710852455d67e78e4348c9e30a120`)
                 // Saving the data to the temporary array from above
                 .then(res => {
-                    arrayOfCityDataFromLocalStorage.unshift(res.data);
+                    arrayOfCityDataFromLocalStorage.unshift({ userInput: city, order: index, data: res.data });
                 }).then(res => {
                     // Set the current container's state to the contents of the 2 arrays
                     this.setState({
@@ -98,7 +98,7 @@ export default class WeatherData extends Component {
             <div>
                 <Route exact path={`${this.props.match.url}/`} render={() => <CityList {...this.props} data={this.state.cityDataCollection} />} /> 
                 <Route path={`${this.props.match.url}/add`} render={() => <AddCity {...this.props} handleSubmitFromAddCity={this.handleSubmitFromAddCity} />} />
-                <Route path={`${this.props.match.url}/city/:cityName`} render={(props) => <SingleCityView {...this.props} {...props} data={this.state.cityDataCollection} />} />
+                <Route path={`${this.props.match.url}/city/:cityName`} render={(props) => <SingleCityView {...this.props} {...props} dataCollection={this.state.cityDataCollection} />} />
             </div>
         );
     }

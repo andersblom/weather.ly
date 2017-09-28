@@ -53,7 +53,7 @@ export default class SingleCityListItem extends Component {
   }
 
   getBackgroundImage() {
-    switch (this.props.cityData.weather[0].icon) {
+    switch (this.props.cityData.data.weather[0].icon) {
       
       /* eslint-disable */
       // Clear sky
@@ -120,10 +120,10 @@ export default class SingleCityListItem extends Component {
   }
 
   render() {
-    console.log(this.props.cityData)
+    console.log(this.props.cityData.data)
     return (
       <Link 
-        to={`${this.props.match.url}/city/${this.props.cityData.name.toLowerCase()}`} 
+        to={`${this.props.match.url}/city/${this.props.cityData.userInput.toLowerCase()}`} 
         style={(this.state.hover ? 
           {...styles.singleListItemEntry, ...styles.singleListItementryHover, backgroundImage: `url(${this.getBackgroundImage()})`} 
           : 
@@ -134,12 +134,12 @@ export default class SingleCityListItem extends Component {
       >
         <div style={styles.entryImageOverlay}></div>
         <div style={styles.entryTextContainer}>
-          <div style={styles.entryHeader}>{this.props.cityData.name}, {this.props.cityData.sys.country}</div>
+          <div style={styles.entryHeader}>{this.props.cityData.userInput}, {this.props.cityData.data.sys.country}</div>
           <div style={styles.entryInfo}>
-              {this.getTemperatureInUnit(this.props.cityData.main.temp, this.props.appSettingUnitTemp)} {this.getUnitLetter(this.props.appSettingUnitTemp)}
+              {this.getTemperatureInUnit(this.props.cityData.data.main.temp, this.props.appSettingUnitTemp)} {this.getUnitLetter(this.props.appSettingUnitTemp)}
           </div>
         </div>
-        <div><img src={ArrowRight} alt={`See the weather for ${this.props.cityData.name}`} /></div>
+        <div><img src={ArrowRight} alt={`See the weather for ${this.props.cityData.data.userInput}`} /></div>
         <div style={(this.state.hover ?
           {...styles.entryShadowBackdrop, ...styles.entryShadowBackdropHover}
           :

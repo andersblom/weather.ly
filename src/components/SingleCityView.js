@@ -15,19 +15,19 @@ export default class SingleCityView extends Component {
   }
 
   render() {
-    var data;
+    var singleCityData;
     
-    this.props.data.forEach((city, index) => {
-      if (city.name.toLowerCase() === this.props.match.params.cityName) {
-        data = city;
+    this.props.dataCollection.forEach((city, index) => {
+      if (city.userInput.toLowerCase() === this.props.match.params.cityName) {
+        singleCityData = city;
       }
     });
 
-    if (data !== undefined) {
+    if (singleCityData !== undefined) {
       return (
         <div>
           <Header {...this.props} showBackBtn={true} showSettings={true} />
-          HI FRIEND IT'S A WHOPPING {this.getTemperatureInSettingsMetric(data.main.temp, this.props.appSettingUnitTemp)} IN {data.name.toUpperCase()} HOW COOL IS THAT
+          HI FRIEND IT'S A WHOPPING {this.getTemperatureInSettingsMetric(singleCityData.data.main.temp, this.props.appSettingUnitTemp)} IN {singleCityData.data.name.toUpperCase()} HOW COOL IS THAT
         </div>
       );
     } else {
