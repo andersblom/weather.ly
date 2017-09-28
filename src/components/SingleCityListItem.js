@@ -57,46 +57,55 @@ export default class SingleCityListItem extends Component {
       
       /* eslint-disable */
       case "01d":
+      case "01n":
         console.log("clear sky");
         return ClearSkyBg;
         break;
 
       case "02d":
+      case "02n":
         console.log("few clouds")
         return FewCloudsBg;
         break;
 
       case "03d":
+      case "03n":
         console.log("scattered clouds");
         return ScatteredCloudsBg;
         break;
 
       case "04d":
+      case "04n":
         console.log("broken clouds");
         return BrokenCloudsBg;
         break;
 
       case "09d":
+      case "09n":
         console.log("shower rain");
         return ShowerRainBg;
         break;
 
       case "10d":
+      case "10n":
         console.log("rain")
         return RainBg;
         break;
 
       case "11d":
+      case "11n":
         console.log("thunderstorm");
         return ThunderstormBg;
         break;
 
       case "13d":
+      case "13n":
         console.log("snow");
         return SnowingBg;
         break;
 
       case "50d":
+      case "50n":
         console.log("mist");
         return MistBg;
         break;
@@ -107,7 +116,7 @@ export default class SingleCityListItem extends Component {
 
     }
   }
-  
+
   render() {
     console.log(this.props.cityData)
     return (
@@ -142,6 +151,7 @@ export default class SingleCityListItem extends Component {
 
 const styles = {
   singleListItemEntry: {
+    backgroundColor: sharedStyles.color.fadedBlue,
     width: "calc(100% - 140px)",
     height: "calc(14vh - 40px)", // vh - 50px (padding)
     margin: "0 15px 40px 15px",
