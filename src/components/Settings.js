@@ -135,6 +135,7 @@ const styles = {
     marginBottom: "20px",
     fontFamily: sharedStyles.font,
     fontSize: "14px",
+    fontWeight: "bold",
     textTransform: "uppercase",
     letterSpacing: "1px",
     color: sharedStyles.color.fadedBlue,
@@ -178,20 +179,13 @@ const styles = {
   },
 
   submitButton: {
-    backgroundColor: "transparent",
-    padding: "1.2em 3.4em 1.2em 3.4em",
-    border: "3px solid",
     fontFamily: sharedStyles.font,
-    textDecoration: "none",
-    textTransform: "uppercase",
-    fontSize: "14px",
-    fontWeight: "bold",
     position: "relative",
     zIndex: "0",
-    cursor: "pointer",
 
     borderColor: sharedStyles.color.blue,
     color: sharedStyles.color.blue,
-    borderRadius: "100px",
+
+    ...sharedStyles.extends.button,
   }
 }
