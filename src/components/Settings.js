@@ -116,7 +116,7 @@ export default class Settings extends Component {
 
 const styles = {
   settingsContainer: {
-    height: "calc(100vh - 230px)", // 115 (Header: 90px height + 25px margin) * 2 to account for top/bottom
+    height: "calc(100vh - 115px)", // 115 (Header: 90px height + 25px margin) * 2 to account for top/bottom
     display: "flex",
     flexDirection: "column",
     justifyContent: "center",
@@ -172,6 +172,7 @@ const styles = {
 
   submitButtonContainer: {
     marginTop: "auto",
+    marginBottom: "50px",
   },
 
   submitButton: {
