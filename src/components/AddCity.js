@@ -132,6 +132,7 @@ const styles = {
     fontWeight: "bold",
     borderRadius: "100px",
     cursor: "pointer",
+    WebkitAppearance: "none",
   },
 
   addCityButtonDisabled: {

@@ -79,6 +79,7 @@ export default class WeatherData extends Component {
         if (currentStorage !== null) {
             var newStorage = currentStorage.slice();
         } else {
+            // eslint-disable-next-line
             var newStorage = [];
         }
 
