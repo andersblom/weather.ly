@@ -98,7 +98,7 @@ export default class WeatherData extends Component {
             <div>
                 <Route exact path={`${this.props.match.url}/`} render={() => <CityList {...this.props} data={this.state.cityDataCollection} />} /> 
                 <Route path={`${this.props.match.url}/add`} render={() => <AddCity {...this.props} handleSubmitFromAddCity={this.handleSubmitFromAddCity} />} />
-                <Route path={`${this.props.match.url}/city/:cityName`} render={() => <SingleCityView {...this.props} data={this.state.cityDataCollection} />} />
+                <Route path={`${this.props.match.url}/city/:cityName`} render={(props) => <SingleCityView {...this.props} {...props} data={this.state.cityDataCollection} />} />
             </div>
         );
     }
