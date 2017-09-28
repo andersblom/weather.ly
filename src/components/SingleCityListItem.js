@@ -120,7 +120,6 @@ export default class SingleCityListItem extends Component {
   }
 
   render() {
-    console.log(this.props.cityData.data)
     return (
       <Link 
         to={`${this.props.match.url}/city/${this.props.cityData.userInput.toLowerCase()}`} 

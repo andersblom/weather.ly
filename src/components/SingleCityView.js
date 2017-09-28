@@ -1,7 +1,20 @@
 import React, { Component } from 'react';
 import Header from './Header';
 
+import ViewModeNavigation from './CityView/ViewModeNavigation';
+import QuickMode from './CityView/_QuickMode';
+import StoryMode from './CityView/_StoryMode';
+import DataMode from './CityView/_DataMode';
+
 export default class SingleCityView extends Component {
+  constructor() {
+    super();
+    this.state = {
+      viewMode: "storymode",
+      showWeek: false,
+    }
+    this.getTemperatureInSettingsMetric = this.getTemperatureInSettingsMetric.bind(this);
+  }
   getTemperatureInSettingsMetric(kelvin, unit) {
     if (unit === "celsius") {
       let calculatedNumber = kelvin - 273.15;
@@ -27,7 +40,13 @@ export default class SingleCityView extends Component {
       return (
         <div>
           <Header {...this.props} showBackBtn={true} showSettings={true} />
-          HI FRIEND IT'S A WHOPPING {this.getTemperatureInSettingsMetric(singleCityData.data.main.temp, this.props.appSettingUnitTemp)} IN {singleCityData.data.name.toUpperCase()} HOW COOL IS THAT
+          <div>
+            <div>Show week –</div> 
+            {(this.state.viewMode === "quickmode") ? <QuickMode {...this.props} singleCityData={singleCityData} showWeek={this.state.showWeek} getTemperatureInSettingsMetric={this.getTemperatureInSettingsMetric} /> : null}
+            {(this.state.viewMode === "storymode") ? <StoryMode {...this.props} singleCityData={singleCityData} showWeek={this.state.showWeek} getTemperatureInSettingsMetric={this.getTemperatureInSettingsMetric} /> : null}
+            {(this.state.viewMode === "datamode") ? <DataMode {...this.props} singleCityData={singleCityData} showWeek={this.state.showWeek} getTemperatureInSettingsMetric={this.getTemperatureInSettingsMetric} /> : null}
+            <ViewModeNavigation currentViewMode={this.state.viewMode} />
+          </div>
         </div>
       );
     } else {
