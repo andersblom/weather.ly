@@ -154,6 +154,8 @@ const styles = {
     fontWeight: "bold",
     position: "relative",
     zIndex: "0",
+    
+    cursor: "pointer",
   },
   changeSettingButtonLeft: {
     borderRadius: "100px 0px 0px 100px",
@@ -186,6 +188,7 @@ const styles = {
     fontWeight: "bold",
     position: "relative",
     zIndex: "0",
+    cursor: "pointer",
 
     borderColor: sharedStyles.color.blue,
     color: sharedStyles.color.blue,

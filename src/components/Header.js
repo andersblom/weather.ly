@@ -47,6 +47,7 @@ const styles = {
     backIcon: {
         height: "30px",
         width: "30px",
+        cursor: "pointer",
     },
 
     headerName: {
@@ -64,5 +65,6 @@ const styles = {
     settingsIcon: {
         height: "30px",
         width: "30px",
+        cursor: "pointer",
     },
 }

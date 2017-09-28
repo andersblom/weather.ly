@@ -131,10 +131,12 @@ const styles = {
     fontSize: "14px",
     fontWeight: "bold",
     borderRadius: "100px",
+    cursor: "pointer",
   },
 
   addCityButtonDisabled: {
     borderColor: sharedStyles.color.fadedBlue,
     color: sharedStyles.color.fadedBlue,
+    cursor: "not-allowed",
   }
 }
