@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import sharedStyles from '../../resources/sharedStyles';
+
 export default class StoryMode extends Component {
   getCityName() {
     return this.props.singleCityData.userInput;
@@ -47,6 +49,7 @@ export default class StoryMode extends Component {
           break;
 
         default: 
+          return "?????"
           break;
       }
       /* eslint-enable */
@@ -66,20 +69,42 @@ export default class StoryMode extends Component {
     const stringToPrint = `${getWindSpeed(this.props.singleCityData.data.wind.speed, this.props.appSettingUnitDistance)} from the ${getWindDirection(this.props.singleCityData.data.wind.deg)}`
 
     return stringToPrint;
+  }
 
+  getTodaysSunrise() {
+    console.log(this.props.singleCityData.data.sys.sunrise);
+    const date = new Date(this.props.singleCityData.data.sys.sunrise * 1000).getUTCDate();
+
+    console.log(date);
   }
   
   render() {
     console.log(this.props.singleCityData);
     return (
-      <div>
-        It’s a beautiful night in {this.getCityName()}, 
-        with a clear blue sky, {this.getTemperatureInUnit()} 
+      <div style={styles.storyModeContainer}>
+        It’s a beautiful night in <span style={styles.highlight}>{this.getCityName()}</span>, 
+        with a clear blue sky, {this.getTemperatureInUnit()}
+        {/* TODO: fix direction because math 🤷‍♀️  */}
         and {this.getWindSpeedAndDirection()}. 
-        Then sun rose at 7 am and will set at 6:59 pm. 
+        The sun rose at {this.getTodaysSunrise()} and will set again at 6:59 pm. 
         It’s not too humid, and there is plenty of 
         chance to see the stars with only 21% clouds.
       </div>
     );
   }
+}
+
+const styles = {
+  storyModeContainer: {
+    fontFamily: sharedStyles.font,
+    fontWeight: "400",
+    fontSize: "19px",
+    lineHeight: "1.26em",
+    letterSpacing: "-0.3px",
+  },
+
+  highlight: {
+    fontWeight: "bold",
+    color: sharedStyles.color.blue,
+  },
 }

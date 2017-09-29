@@ -19,7 +19,16 @@ const sharedStyles = {
             fontWeight: "bold",
             cursor: "pointer",
             borderRadius: "100px",
-        }
+        },
+        vh: {
+            minusHeaderOnly: {
+                height: "calc(100vh - 115px)", // 115 (Header: 90px height + 25px margin) * 2 to account for top/bottom
+            },
+            minusHeaderAndBottom: {
+                height: "calc(100vh - 230px)", // 115 (Header: 90px height + 25px margin) * 2 to account for top/bottom
+            }
+        },
+        
     }
 }
 

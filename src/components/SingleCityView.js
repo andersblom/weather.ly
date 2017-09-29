@@ -6,6 +6,8 @@ import QuickMode from './CityView/_QuickMode';
 import StoryMode from './CityView/_StoryMode';
 import DataMode from './CityView/_DataMode';
 
+import sharedStyles from '../resources/sharedStyles';
+
 export default class SingleCityView extends Component {
   constructor() {
     super();
@@ -40,12 +42,12 @@ export default class SingleCityView extends Component {
       return (
         <div>
           <Header {...this.props} showBackBtn={true} showSettings={true} />
-          <div>
-            <div>Show week –</div> 
+          <div style={styles.singleCityContainer}>
+            <div style={styles.toggleWeekOrDay}>Show week –</div> 
             {(this.state.viewMode === "quickmode") ? <QuickMode {...this.props} singleCityData={singleCityData} showWeek={this.state.showWeek} getTemperatureInSettingsMetric={this.getTemperatureInSettingsMetric} /> : null}
             {(this.state.viewMode === "storymode") ? <StoryMode {...this.props} singleCityData={singleCityData} showWeek={this.state.showWeek} getTemperatureInSettingsMetric={this.getTemperatureInSettingsMetric} /> : null}
             {(this.state.viewMode === "datamode") ? <DataMode {...this.props} singleCityData={singleCityData} showWeek={this.state.showWeek} getTemperatureInSettingsMetric={this.getTemperatureInSettingsMetric} /> : null}
-            <ViewModeNavigation currentViewMode={this.state.viewMode} />
+            <div style={styles.navigationContainer}><ViewModeNavigation currentViewMode={this.state.viewMode} /></div>
           </div>
         </div>
       );
@@ -56,5 +58,30 @@ export default class SingleCityView extends Component {
         </div>
       );
     }
+  }
+}
+
+const styles = {
+  singleCityContainer: {
+    ...sharedStyles.extends.vh.minusHeaderOnly,
+    
+    fontFamily: sharedStyles.font,
+    
+    margin: "0 40px 0 40px",
+
+    position: "relative",
+  },
+
+  toggleWeekOrDay: {
+    textTransform: "uppercase",
+    fontWeight: "bold",
+    letterSpacing: "1px",
+    color: sharedStyles.color.fadedBlue,
+    marginBottom: "1.6em",
+  },
+
+  navigationContainer: {
+    position: "absolute",
+    bottom: "40px",
   }
 }
