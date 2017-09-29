@@ -4,7 +4,7 @@ export default class DataMode extends Component {
   render() {
     return (
       <div>
-        🤓 yay data
+        yay data
       </div>
     );
   }
