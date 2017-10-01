@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import moment from 'moment';
+
 import sharedStyles from '../../resources/sharedStyles';
 
 export default class StoryMode extends Component {
@@ -71,11 +73,10 @@ export default class StoryMode extends Component {
     return stringToPrint;
   }
 
-  getTodaysSunrise() {
-    console.log(this.props.singleCityData.data.sys.sunrise);
-    const date = new Date(this.props.singleCityData.data.sys.sunrise * 1000).getUTCDate();
-
-    console.log(date);
+  getTime(unixTime) {
+    let date = new Date(unixTime * 1000);
+    date = moment(date).format("LT")
+    return date;
   }
   
   render() {
@@ -86,7 +87,7 @@ export default class StoryMode extends Component {
         with a clear blue sky, {this.getTemperatureInUnit()}
         {/* TODO: fix direction because math 🤷‍♀️  */}
         and {this.getWindSpeedAndDirection()}. 
-        The sun rose at {this.getTodaysSunrise()} and will set again at 6:59 pm. 
+        The sunrise is at {this.getTime(this.props.singleCityData.data.sys.sunrise)} and sunset at {this.getTime(this.props.singleCityData.data.sys.sunset)}. 
         It’s not too humid, and there is plenty of 
         chance to see the stars with only 21% clouds.
       </div>
