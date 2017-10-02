@@ -18,7 +18,7 @@ export default class ViewModeNavButton extends Component {
     }
     render() {
         return (
-            <div onClick={() => this.props.handleViewModeNavClick()} onMouseEnter={() => this.handleHover()} onMouseLeave={() => this.handleHover()} style={styles.button}>{this.props.children}</div>
+            <div onClick={() => this.props.handleViewModeNavClick(this.props.viewMode)} onMouseEnter={() => this.handleHover()} onMouseLeave={() => this.handleHover()} style={styles.button}>{this.props.children}</div>
         );
     }
 }

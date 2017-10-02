@@ -16,6 +16,7 @@ export default class SingleCityView extends Component {
       showWeek: false,
     }
     this.getTemperatureInSettingsMetric = this.getTemperatureInSettingsMetric.bind(this);
+    this.handleViewModeNavClick = this.handleViewModeNavClick.bind(this);
   }
   getTemperatureInSettingsMetric(kelvin, unit) {
     if (unit === "celsius") {
@@ -29,8 +30,10 @@ export default class SingleCityView extends Component {
     }
   }
 
-  handleViewModeNavClick() {
-    console.log("what");
+  handleViewModeNavClick(viewMode) {
+    this.setState({
+      viewMode: viewMode,
+    });
   }
 
   render() {
