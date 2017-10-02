@@ -29,6 +29,10 @@ export default class SingleCityView extends Component {
     }
   }
 
+  handleViewModeNavClick() {
+    console.log("what");
+  }
+
   render() {
     var singleCityData;
     
@@ -47,7 +51,7 @@ export default class SingleCityView extends Component {
             {(this.state.viewMode === "quickmode") ? <QuickMode {...this.props} singleCityData={singleCityData} showWeek={this.state.showWeek} getTemperatureInSettingsMetric={this.getTemperatureInSettingsMetric} /> : null}
             {(this.state.viewMode === "storymode") ? <StoryMode {...this.props} singleCityData={singleCityData} showWeek={this.state.showWeek} getTemperatureInSettingsMetric={this.getTemperatureInSettingsMetric} /> : null}
             {(this.state.viewMode === "datamode") ? <DataMode {...this.props} singleCityData={singleCityData} showWeek={this.state.showWeek} getTemperatureInSettingsMetric={this.getTemperatureInSettingsMetric} /> : null}
-            <div style={styles.navigationContainer}><ViewModeNavigation currentViewMode={this.state.viewMode} /></div>
+            <div style={styles.navigationContainer}><ViewModeNavigation handleViewModeNavClick={this.handleViewModeNavClick} currentViewMode={this.state.viewMode} /></div>
           </div>
         </div>
       );
@@ -83,5 +87,6 @@ const styles = {
   navigationContainer: {
     position: "absolute",
     bottom: "40px",
+    width: "100%",
   }
 }
