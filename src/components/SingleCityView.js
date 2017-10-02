@@ -12,7 +12,7 @@ export default class SingleCityView extends Component {
   constructor() {
     super();
     this.state = {
-      viewMode: "storymode",
+      viewMode: "quickmode",
       showWeek: false,
     }
     this.getTemperatureInSettingsMetric = this.getTemperatureInSettingsMetric.bind(this);

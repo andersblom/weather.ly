@@ -18,7 +18,16 @@ export default class ViewModeNavButton extends Component {
     }
     render() {
         return (
-            <div onClick={() => this.props.handleViewModeNavClick(this.props.viewMode)} onMouseEnter={() => this.handleHover()} onMouseLeave={() => this.handleHover()} style={styles.button}>{this.props.children}</div>
+            <div 
+                onClick={() => this.props.handleViewModeNavClick(this.props.viewMode)} 
+                onMouseEnter={() => this.handleHover()} 
+                onMouseLeave={() => this.handleHover()} 
+                style={(this.props.currentViewMode === this.props.viewMode ? 
+                    {...styles.button, ...styles.buttonActive}
+                    :
+                    styles.button
+                )}
+            >{this.props.children}</div>
         );
     }
 }
@@ -31,7 +40,10 @@ const styles = {
     display: "flex",
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: sharedStyles.color.blue,
+    backgroundColor: sharedStyles.color.fadedBlue,
     cursor: "pointer",
+  },
+  buttonActive: {
+    backgroundColor: sharedStyles.color.blue,
   }
 }
