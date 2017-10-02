@@ -175,7 +175,6 @@ export default class StoryMode extends Component {
   }
 
   render() {
-    console.log(this.props.singleCityData);
     return (
       <div style={styles.storyModeContainer}>
         {this.introMessage()} in <span style={styles.highlight}>{this.getCityName()}</span>, with a clear blue sky, <span style={styles.highlight}>{this.getTemperatureInUnit()}</span> and <span style={styles.highlight}>{this.getWindSpeedAndDirection()}</span>. 

@@ -25,8 +25,8 @@ export default class ViewModeNavButton extends Component {
 
 const styles = {
   button: {
-    height: "80px",
-    width: "80px",
+    height: "60px",
+    width: "60px",
     borderRadius: "100px",
     display: "flex",
     justifyContent: "center",
