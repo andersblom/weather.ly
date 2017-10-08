@@ -50,7 +50,7 @@ export default class SingleCityView extends Component {
         <div>
           <Header {...this.props} showBackBtn={true} showSettings={true} />
           <div style={styles.singleCityContainer}>
-            <div style={styles.toggleWeekOrDay}>Show week –</div> 
+            {/* <div style={styles.toggleWeekOrDay}>Show week –</div>  */}
             {(this.state.viewMode === "quickmode") ? <QuickMode {...this.props} singleCityData={singleCityData} showWeek={this.state.showWeek} getTemperatureInSettingsMetric={this.getTemperatureInSettingsMetric} /> : null}
             {(this.state.viewMode === "storymode") ? <StoryMode {...this.props} singleCityData={singleCityData} showWeek={this.state.showWeek} getTemperatureInSettingsMetric={this.getTemperatureInSettingsMetric} /> : null}
             {(this.state.viewMode === "datamode") ? <DataMode {...this.props} singleCityData={singleCityData} showWeek={this.state.showWeek} getTemperatureInSettingsMetric={this.getTemperatureInSettingsMetric} /> : null}
