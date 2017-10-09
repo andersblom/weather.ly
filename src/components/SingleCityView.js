@@ -4,7 +4,6 @@ import Header from './Header';
 import ViewModeNavigation from './CityView/ViewModeNavigation';
 import QuickMode from './CityView/_QuickMode';
 import StoryMode from './CityView/_StoryMode';
-import DataMode from './CityView/_DataMode';
 
 import sharedStyles from '../resources/sharedStyles';
 
@@ -50,10 +49,8 @@ export default class SingleCityView extends Component {
         <div>
           <Header {...this.props} showBackBtn={true} showSettings={true} />
           <div style={styles.singleCityContainer}>
-            {/* <div style={styles.toggleWeekOrDay}>Show week –</div>  */}
             {(this.state.viewMode === "quickmode") ? <QuickMode {...this.props} singleCityData={singleCityData} showWeek={this.state.showWeek} getTemperatureInSettingsMetric={this.getTemperatureInSettingsMetric} /> : null}
             {(this.state.viewMode === "storymode") ? <StoryMode {...this.props} singleCityData={singleCityData} showWeek={this.state.showWeek} getTemperatureInSettingsMetric={this.getTemperatureInSettingsMetric} /> : null}
-            {(this.state.viewMode === "datamode") ? <DataMode {...this.props} singleCityData={singleCityData} showWeek={this.state.showWeek} getTemperatureInSettingsMetric={this.getTemperatureInSettingsMetric} /> : null}
             <div style={styles.navigationContainer}><ViewModeNavigation handleViewModeNavClick={this.handleViewModeNavClick} currentViewMode={this.state.viewMode} /></div>
           </div>
         </div>
@@ -61,7 +58,10 @@ export default class SingleCityView extends Component {
     } else {
       return (
         <div>
-          Looking up into the sky and calculating..
+          <Header {...this.props} showBackBtn={true} showSettings={true} />
+          <div style={styles.singleCityContainer}>
+            Looking up into the sky and calculating..
+          </div>
         </div>
       );
     }

@@ -107,7 +107,7 @@ export default class StoryMode extends Component {
           break;
 
         default: 
-          return "?????"
+          return "North"
           break;
       }
       /* eslint-enable */
