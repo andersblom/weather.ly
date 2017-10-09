@@ -29,6 +29,92 @@ export default class QuickMode extends Component {
       return "°F";
     }
   }
+
+  getSkyInfo() {
+    let cloudPercentage = this.props.singleCityData.data.clouds.all;
+    switch(true) {
+      case cloudPercentage <= 15:
+        return "Clear sky"
+      
+      case cloudPercentage > 15 && cloudPercentage <= 35:
+        return `Somewhat clear sky` 
+      
+      case cloudPercentage > 35 && cloudPercentage <= 60:
+        return `Cloudy` 
+      
+      case cloudPercentage > 60:
+        return `Very cloudy` 
+    }
+  }
+
+  getRainInfo() {
+    let weather = this.props.singleCityData.data.weather[0].icon;
+    
+        switch(weather) {
+          /* eslint-disable */
+          // Clear sky
+          case "01d":
+          case "01n":
+          // Few clouds
+          case "02d":
+          case "02n":
+            return "No rain";
+            break;
+    
+          // Scattered clouds
+          case "03d":
+          case "03n":
+          // Broken Clouds
+          case "04d":
+          case "04n":
+            return "No rain";
+            break;
+    
+          // Shower rain
+          case "09d":
+          case "09n":
+          // Rain
+          case "10d":
+          case "10n":
+            return "Rain";
+            break;
+    
+          // Thunderstorm
+          case "11d":
+          case "11n":
+            return "Rain / Thunderstorms";
+            break;
+    
+          // Snow
+          case "13d":
+          case "13n":
+            return "Snow";
+            break;
+    
+          // Mist
+          case "50d":
+          case "50n":
+            return "Mist";
+            break;
+    
+          // No match (Could happen because of API problems/changes)
+          default: 
+            return "It's gonna be a good day!";
+          /* eslint-enable */
+        }
+  }
+
+  getWindInfo() {
+    let wind = this.props.singleCityData.data.wind.speed;
+
+    if (wind < 1) {
+      return "No wind";
+    } else if (wind => 1 && wind <= 2) {
+      return "Some wind";
+    } else {
+      return "Windy";
+    }
+  }
   
   render() {
     console.log(this.props);
@@ -42,14 +128,14 @@ export default class QuickMode extends Component {
         <div style={styles.weatherExpContainer}>
           <div style={styles.weatherExpIcon}><img src={WindIcon} alt="Todays weather" /></div>
           <div>
-            <div style={styles.weatherExplanation}>Clear sky,</div>
-            <div style={styles.weatherExplanation}>No rain</div>
+            <div style={styles.weatherExplanation}>{this.getSkyInfo()},</div>
+            <div style={styles.weatherExplanation}>{this.getRainInfo()}</div>
           </div>
         </div>
         <div>
           <div style={styles.weatherExpIcon}><img src={CloudIcon} alt="Todays weather" /></div>
           <div>
-            <div style={styles.weatherExplanation}>Little to no wind</div>
+            <div style={styles.weatherExplanation}>{this.getWindInfo()}</div>
           </div>
         </div>
       </div>
