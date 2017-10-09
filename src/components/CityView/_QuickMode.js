@@ -18,7 +18,7 @@ export default class QuickMode extends Component {
       calculatedNumber = calculatedNumber.toFixed(0);
       return calculatedNumber;
     }
-  },
+  }
 
   getTemperatureUnit() {
     let unit = this.props.appSettingUnitTemp;
@@ -28,7 +28,7 @@ export default class QuickMode extends Component {
     } else {
       return "°F";
     }
-  },
+  }
   
   render() {
     console.log(this.props);
