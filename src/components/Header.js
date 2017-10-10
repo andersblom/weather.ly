@@ -54,6 +54,7 @@ const styles = {
         margin: "0px auto",
         fontWeight: "300",
         fontSize: "14px",
+        color: sharedStyles.color.fadedBlue,
     },
 
     settingsButton: {
