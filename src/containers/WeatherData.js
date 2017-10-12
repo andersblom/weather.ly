@@ -52,10 +52,6 @@ export default class WeatherData extends Component {
         }
     }
 
-    deleteCityFromStorage(city) {
-        // Comming soon
-    }
-
     saveCityToLocalStorage(city) {
         // Old city data
         const currentCities = localStorage.getItem("weatherly_cities");
