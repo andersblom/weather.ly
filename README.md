@@ -10,5 +10,8 @@ Passion project weather app by [Anders Blom](http://andersblom.dk). This is made
 
 Note: This prototype is 100% optimized for mobile with desktop not taken into account. Because of the goal to release this as a native app, a desktop version of this is currently out of this projects scope.
 
+## Demo
+Try out the demo-version, I am hosting it at [dev.andersblom.dk/weatherly](http://dev.andersblom.dk/weatherly)
+
 ### Storage
 This app utilizes `localStorage()`, and thus does not need a database setup, nor is there any user signup / sign in. This is subject to change at the release of the native version.

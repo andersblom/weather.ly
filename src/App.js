@@ -31,7 +31,7 @@ export default class App extends Component {
   render() {
     return (
       <div className="App">
-        <Router>
+        <Router basename={"weatherly"}>
           <Switch>
             <Route exact path="/" component={Welcome} />
             <Route path="/cities" render={(props) => <WeatherData {...props} appSettingUnitDistance={this.state.appSettingUnitDistance} appSettingUnitTemp={this.state.appSettingUnitTemp} />} />
